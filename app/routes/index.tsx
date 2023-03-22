@@ -1,3 +1,15 @@
+import { LinksFunction } from '@remix-run/node';
+import stylesheet from '~/tailwind.css'
+
+
+export const links: LinksFunction = () => {
+  return [{
+    rel: 'stylesheet',
+    href: stylesheet,
+  }]
+}
+
+
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
