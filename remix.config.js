@@ -6,6 +6,7 @@ module.exports = {
   // serverBuildPath: "build/index.js",
   // publicPath: "/build/",
   future: {
+    unstable_dev: true,
     unstable_tailwind: true,
   }
 };

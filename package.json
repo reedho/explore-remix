@@ -3,15 +3,23 @@
   "sideEffects": false,
   "scripts": {
     "build": "remix build",
-    "dev": "remix dev",
-    "start": "remix-serve build",
+    "dev": "npm-run-all build --parallel \"dev:*\"",
+    "dev:build": "cross-env NODE_ENV=development remix dev",
+    "dev:serve": "cross-env NODE_ENV=development nodemon --watch build --require dotenv/config ./server.js",
+    "__dev:node": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server.js --watch ./server.js",
+    "__dev:remix": "remix watch",
+    "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@remix-run/express": "^1.14.3",
     "@remix-run/node": "^1.14.3",
     "@remix-run/react": "^1.14.3",
-    "@remix-run/serve": "^1.14.3",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "express": "^4.18.2",
     "isbot": "^3.6.7",
+    "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -20,7 +28,11 @@
     "@remix-run/eslint-config": "^1.14.3",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "dotenv": "^16.0.3",
     "eslint": "^8.36.0",
+    "nodemon": "^2.0.21",
+    "npm-run-all": "^4.1.5",
+    "react-refresh": "^0.14.0",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
   },
