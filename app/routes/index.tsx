@@ -1,42 +1,33 @@
-import { LinksFunction } from '@remix-run/node';
-import stylesheet from '~/tailwind.css'
+import { LinksFunction, MetaFunction } from '@remix-run/node';
+import { Link } from '@remix-run/react';
+
+import stylesUrl from "~/styles/index.css";
 
 export const links: LinksFunction = () => {
-  return [{
-    rel: 'stylesheet',
-    href: stylesheet,
-  }]
-}
+  return [{ rel: "stylesheet", href: stylesUrl }];
+};
 
-export default function Index() {
+export const meta: MetaFunction = () => ({
+  title: "Remix: So great, it's funny!",
+  description:
+    "Remix jokes app. Learn Remix and laugh at the same time!",
+});
+
+export default function IndexRoute() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Hi there, Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial, lets go!
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial, you'll love this.
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs, do not forget to your coffee!
-          </a>
-        </li>
-      </ul>
+    <div className="container">
+      <div className="content">
+        <h1>
+          Remix <span>Jokes!</span>
+        </h1>
+        <nav>
+          <ul>
+            <li>
+              <Link to="jokes">Read Jokes</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 }
