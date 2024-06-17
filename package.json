@@ -6,8 +6,9 @@
     "dev": "npm-run-all build --parallel \"dev:*\"",
     "dev:build": "cross-env NODE_ENV=development remix dev",
     "dev:serve": "cross-env NODE_ENV=development nodemon --watch build --require dotenv/config ./server.js",
-    "__dev:node": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server.js --watch ./server.js",
+    "__dev": "npm-run-all build --parallel \"__dev:*\"",
     "__dev:remix": "remix watch",
+    "__dev:node": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server.js --watch ./server.js",
     "start": "cross-env NODE_ENV=production node ./server.js",
     "typecheck": "tsc"
   },

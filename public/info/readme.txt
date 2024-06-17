@@ -1,0 +1,1 @@
+Static folder and its file contents is okay too.
